@@ -32,6 +32,12 @@ defmodule CoinmarketcapApi do
       |> process_result()
   end
 
+  def fetch_ticker(%{convert: convert, limit: limit}) do
+    ticker_url("?convert=#{convert}&limit=#{limit}")
+      |> get([],@http_opts)
+      |> process_result()
+  end
+  
   def fetch_ticker(%{limit: limit}) do
     ticker_url("?limit=#{limit}")
       |> get([],@http_opts)
